@@ -134,8 +134,32 @@ public class LinearRecursionMethods {
 	 *         beginIndex); length()
 	 */
 	public static boolean isSubstring(String str, String substr) {
+		boolean res = false;
+		if (str.length() < substr.length()) {
+			return false;
+		}
+		if (str.length() == 0) {
+			return false;
+		}
+		if (substr.length() == 0) {
+			return true;
+		}
+		if (!isEqual(str.substring(0, substr.length()), substr)) {
+			res = isSubstring(str.substring(1), substr);
+		} else {
+			return true;
+		}
+		return res;
+	}
 
-		// TODO
-		return false;
+	private static boolean isEqual(String str, String substr) {
+		boolean res = false;
+		if (substr.length() == 0) {
+			return true;
+		}
+		if (str.charAt(0) == substr.charAt(0)) {
+			res = isEqual(str.substring(1), substr.substring(1));
+		}
+		return res;
 	}
 }
