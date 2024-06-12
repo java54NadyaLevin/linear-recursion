@@ -42,7 +42,7 @@ public class LinearRecursionMethods {
 		if (b > 0) {
 			res = powRecursive(a, b);
 		}
-		return (a < 0 && b%2 != 0)? -res: res;
+		return (a < 0 && b % 2 != 0) ? -res : res;
 	}
 
 	private static int powRecursive(int a, int b) {
@@ -55,7 +55,7 @@ public class LinearRecursionMethods {
 		int res = 0;
 		if (y > 0) {
 			res = x + multiply(x, y - 1);
-		}else if(y < 0) {
+		} else if (y < 0) {
 			res = x + multiply(x, y + 1);
 		}
 		return res;
@@ -116,8 +116,11 @@ public class LinearRecursionMethods {
 	 */
 	public static int square(int x) {
 		int res = 0;
-		if (x > 0) {
-			res = x + square(x - 1);
+		if (x == 0) {
+			res = 0;
+		} else {
+			x = Math.abs(x);
+			res = square(x - 1) + x + x - 1;
 		}
 		return res;
 	}
